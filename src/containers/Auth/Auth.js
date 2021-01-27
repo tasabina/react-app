@@ -4,6 +4,7 @@ import Button from '../../components/UI/Button/Button'
 import Input from '../../components/UI/Input/Input'
 import is from 'is_js'
 import axios from 'axios'
+import {API_LOGIN_KEY, API_SIGNUP_KEY} from '../../_config'
 
 export default class Auth extends Component {
     state = {
@@ -43,7 +44,7 @@ export default class Auth extends Component {
             returnSecureToken: true
         }
         try {
-            const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCk6GRLaAohTbpHzGfX1MKtakyJaiZXcOE', authData)
+            const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_LOGIN_KEY}`, authData)
             console.log(response.data)
         } catch(e) {
             console.error(e)
@@ -56,7 +57,7 @@ export default class Auth extends Component {
             returnSecureToken: true
         }
         try {
-            const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCk6GRLaAohTbpHzGfX1MKtakyJaiZXcOE', authData)
+            const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_SIGNUP_KEY}`, authData)
             console.log(response.data)
         } catch(e) {
             console.error(e)
